@@ -1,0 +1,134 @@
+{% extends 'base.jinja2' %}
+{%  block content %}
+    <div class="page-header">
+        <h3>Featured Post</h3>
+    </div>
+    <div class="row">
+    <div class="jumbotron">
+        <h1>The Pointless Debate — Bots vs. Apps</h1>
+        <p>
+            Bots are fascinating, and I’m bullish.
+            <br><br> However I’ve become increasingly annoyed and frustrated by the arguments that both believers and skeptics have presented on bots. Believers claim we should forget apps because bots are taking over; Skeptics snicker at the initial poor user experience of bots and restate their allegiance to apps.
+            <br><br> Both perspectives are nonsensical, because you can’t compare Bots to Apps; bots are a mode of an application. Similarly, you can’t compare Cars to Transportation; cars are a mode of transportation. It’s an important distinction to make because it helps you conceptually understand that bots are not here to replace applications but to augment them with a new mode.
+        </p>
+        <br>
+        <h6>Reading time: 5 min</h6>
+        <a class="btn btn-primary" href="https://chatbotsmagazine.com/the-pointless-debate-bots-vs-apps-d19df71d143">
+            Read More
+        </a>
+    </div>
+
+    </div>
+    <div class="page-header">
+        <h3>Recent Posts</h3>
+    </div>
+    <div class="row">
+    {% for post in posts %}
+      <div class="col-sm-6 col-md-4">
+        <div class="thumbnail">
+          <div class="caption">
+              <h4>{{ post["title"] }}</h4>
+              <p>{{ post["subtitle"] }}</p>
+                <h6>Reading time: {{ post["reading_time"] }} min</h6>
+              <br>
+              <a class="btn btn-primary" href="{{ post["url"] }}">Read More</a>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+    </div>
+    <div class="text-center">
+        <a href="https://medium.com/@matthewedanwoo" class="btn btn-default btn-lg">See More</a>
+    </div>
+
+    <div class="page-header">
+        <h3>Personal Projects</h3>
+    </div>
+
+    <div class="row">
+
+        <div class="col-sm-6 col-md-4">
+            <div class="thumbnail">
+                <div class="caption">
+                    <h4>Alexa Voice: Mess Deterrent Skill</h4>
+                    <p>An Alexa Skill to record who should be charged for a mess and retrieve how much is owed.</p>
+                    <h5>Progress: 80% </h5>
+                        <div class="progress">
+                            <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="60" aria-valuemin="0"
+                         aria-valuemax="100" style="width: 80%;">
+                                <span class="sr-only">80% Complete</span>
+                            </div>
+                        </div>
+                    <br>
+                    <a class="btn btn-primary" href="https://github.com/matthewwoo/broderickalexa">
+                        View Project</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-6 col-md-4">
+          <div class="thumbnail">
+          <div class="caption">
+              <h4>Nerdy Larry - Data Science Bot</h4>
+              <p>Making data science more accesible by helping you query, visualize and analyze data all through Slack.
+              </p>
+              <h5>Progress: 30% </h5>
+              <div class="progress">
+                <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="60" aria-valuemin="0"
+                     aria-valuemax="100" style="width: 30%;">
+                    <span class="sr-only">60% Complete</span>
+                </div>
+            </div>
+              <br>
+              <a class="btn btn-primary"
+                 href="https://docs.google.com/document/d/1LQLneDZQLuKXOZPWs7SLduIgR9B_jPv1Fbip_lNfbZ4/edit?usp=sharing">
+                  View Project</a>
+          </div>
+        </div>
+      </div>
+
+    <div class="col-sm-6 col-md-4">
+        <div class="thumbnail">
+            <div class="caption">
+                <h4>Instapaper Bot</h4>
+                <p>Helping you <i>actually</i> read all the best articles in your Slack channels.</p>
+                <h5>Progress: 100%</h5>
+                <div class="progress">
+                    <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="60" aria-valuemin="0"
+                         aria-valuemax="100" style="width: 100%;">
+                        <span class="sr-only">60% Complete</span>
+                    </div>
+                </div>
+                <br>
+                <a class="btn btn-primary" href="https://github.com/matthewwoo/slack-bot-3/tree/master/src/models">
+                    View Project</a>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div class="row">
+
+     <div class="col-sm-6 col-md-4">
+        <div class="thumbnail">
+            <div class="caption">
+                <h4>Embed Medium Posts</h4>
+                <p>Embed and automatically update Medium posts on your personal website.</p>
+                <h5>Progress: 100%</h5>
+                <div class="progress">
+                    <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="60" aria-valuemin="0"
+                         aria-valuemax="100" style="width: 100%;">
+                        <span class="sr-only">60% Complete</span>
+                    </div>
+                </div>
+                <br>
+                <a class="btn btn-primary" href="https://github.com/matthewwoo/Woosite/blob/master/src/medium.py">
+                    View Project</a>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+{%  endblock %}
