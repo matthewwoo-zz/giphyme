@@ -1,24 +1,9 @@
-import io
-import os
-import json
 from google.cloud import vision
 
-def Selfie(object):
 
-    def __init__(self, name, emotion, image):
-        self.name = name
-        self.emotion = emotion
-        self.image = image
-        pass
+def Vision(object):
 
-    def json(self):
-        return {
-            'name': self.name,
-            'emotion': self.emotion,
-            'image': self.image
-        }
-
-
+    @staticmethod
     def coordinates(file_name):
         vision_client = vision.Client('GiphyMe')
         file_name = os.path.join(
@@ -50,14 +35,3 @@ def Selfie(object):
         print first_face.joy
         print first_face.anger
         print first_face.landmarks.left_ear_tragion.position.x_coordinate
-
-
-
-
-
-
-
-
-# print('Faces:')
-# for face in faces:
-#     print(faces.description)w

@@ -10,7 +10,7 @@ vision_client = vision.Client('GiphyMe')
 
 file_name = os.path.join(
     os.path.dirname(__file__),
-    'Profile_Photo copy.jpg')
+    'profile.jpg')
 
 with io.open(file_name, 'rb') as image_file:
     content = image_file.read()
