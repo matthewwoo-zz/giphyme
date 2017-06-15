@@ -1,5 +1,7 @@
 import io
 import os
+import src.Credentials
+
 
 from google.cloud import vision
 
@@ -37,7 +39,9 @@ class FaceDraw(object):
         print first_face.detection_confidence
         print first_face.joy
         print first_face.anger
-        print first_face.landmarks.left_ear_tragion.position.x_coordinate
+        print first_face.landmarks.left_eye.position.x_coordinate
+        print first_face.landmarks.right_eye.position.x_coordinate
+
 
     def detect_crop_hints(self, file):
         vision_client = vision.Client()
