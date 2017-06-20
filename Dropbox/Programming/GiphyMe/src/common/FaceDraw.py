@@ -19,28 +19,49 @@ class FaceDraw(object):
 
         with io.open(file_name, 'rb') as image_file:
             content = image_file.read()
-            image = vision_client.image(
-                content=content)
 
-        faces = image.detect_faces(limit=10)
+        image = vision_client.image(content=content)
 
-        first_face = faces[0]
-        print first_face.fd_bounds.__dict__
-        print ('Dump')
-        print ('All Attributes')
-        print vars(first_face)
-        print ('Bounds')
-        print vars(first_face.bounds)
-        print ('Face Bounds')
-        print vars(first_face.fd_bounds)
-        print first_face.__str__
+        faces = image.detect_faces()
+        print('Faces:')
 
-        print first_face.landmarks.left_eye.position.x_coordinate
-        print first_face.detection_confidence
-        print first_face.joy
-        print first_face.anger
-        print first_face.landmarks.left_eye.position.x_coordinate
-        print first_face.landmarks.right_eye.position.x_coordinate
+        for face in faces:
+            print('anger: {}'.format(face.emotions.anger))
+            print('joy: {}'.format(face.emotions.joy))
+            print('surprise: {}'.format(face.emotions.surprise))
+            print('chin center: {}').format(face.landmarks.chin_gnathion.position.x_coordinate)
+            print('chin left: {}').format(face.landmarks.chin_left_gonion.position.x_coordinate)
+            print('chin right: {}').format(face.landmarks.chin_right_gonion.position.x_coordinate)
+            print('nose tip: {}').format(face.landmarks.nose_tip.position.y_coordinate)
+
+            vertices = (['({},{})'.format(bound.x_coordinate, bound.y_coordinate)
+                         for bound in face.bounds.vertices])
+
+            print('face bounds: {}'.format(','.join(vertices)))
+
+        #
+        #
+        # with io.open(file_name, 'rb') as image_file:
+        #     content = image_file.read()
+        #     image = vision_client.image(
+        #         content=content)
+
+        # faces = image.detect_faces(limit=10)
+        # bounds = image.detect_properties()
+        #
+        #
+        #
+        # first_face = faces[0]
+        # print first_face.bound.x_coordinate
+        #
+        #
+        # print first_face.landmarks.left_eye.position.x_coordinate
+        # print first_face.detection_confidence
+        # print first_face.joy
+        # print first_face.anger
+        # print first_face.landmarks.left_eye.position.x_coordinate
+        # print first_face.landmarks.right_eye.position.x_coordinate
+
 
 
     def detect_crop_hints(self, file):
