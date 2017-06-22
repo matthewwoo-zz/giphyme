@@ -1,5 +1,5 @@
 import src.common.FaceDraw as fd
 
 x = fd.FaceDraw()
-x.coordinates('test.jpg')
+x.face_coordinates('test.jpg')
 
