@@ -52,6 +52,9 @@ def main(input_filename, output_filename, max_results):
         image.seek(0)
         highlight_faces(image, faces, output_filename)
 
+## Currently only works with JPEGs
+main('test.jpg', 'a.jpg',4)
+
 
 def crop_square(input_filename, output_filename, crop_filename, max_results):
     main(input_filename,output_filename, crop_filename, max_results)
