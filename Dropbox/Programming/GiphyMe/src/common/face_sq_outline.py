@@ -1,4 +1,3 @@
-import sys
 from PIL import Image, ImageDraw
 from google.cloud import vision
 
@@ -18,8 +17,7 @@ def detect_face(face_file, max_results=4):
     return image.detect_faces()
 
 
-
-def highlight_faces(image, faces):
+def outline_face(image, faces):
     """Marks coordinate of face.
     """
     for face in faces:
@@ -28,7 +26,7 @@ def highlight_faces(image, faces):
     face_coordinates = [box[0][0],box[0][1], box[2][0], box[2][1]]
     return face_coordinates
 
-def crop_square(input_filename, face_coordinates, crop_filename):
+def crop_face(input_filename, face_coordinates, crop_filename):
     img = Image.open(input_filename)
     ## need to update with extracting coordinates from the hightlight faces section
     img2 = img.crop(face_coordinates)
@@ -36,7 +34,7 @@ def crop_square(input_filename, face_coordinates, crop_filename):
     return "saved"
 
 
-def main(input_filename, output_filename, max_results):
+def detect_crop(input_filename, output_filename, max_results):
     with open(input_filename, 'rb') as image:
         faces = detect_face(image, max_results)
         print('Found {} face{}'.format(
@@ -46,12 +44,12 @@ def main(input_filename, output_filename, max_results):
         # Reset the file pointer, so we can read the file again
         image.seek(0)
 
-        face_coordinates = highlight_faces(image, faces)
-        crop_square(input_filename, face_coordinates, output_filename)
+        face_coordinates = outline_face(image, faces)
+        crop_face(input_filename, face_coordinates, output_filename)
 
 
 
-main('test.jpg', 'test_out.jpg', 4)
+main('test.jpg', 'test_out.jpg', 1)
 
 
 
