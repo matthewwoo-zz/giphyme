@@ -19,26 +19,21 @@ def detect_face(face_file, max_results=4):
 
 
 
-def highlight_faces(image, faces, output_filename):
-    """Draws a polygon around the faces, then saves to output_filename.
-
-    Args:
-      image: a file containing the image with the faces.
-      faces: a list of faces found in the file. This should be in the format
-          returned by the Vision API.
-      output_filename: the name of the image file to be created, where the
-          faces have polygons drawn around them.
+def highlight_faces(image, faces):
+    """Marks coordinate of face.
     """
-    im = Image.open(image)
-    draw = ImageDraw.Draw(im)
-
     for face in faces:
         box = [(bound.x_coordinate, bound.y_coordinate)
                for bound in face.bounds.vertices]
-        draw.line(box + [box[0]], width=5, fill='#00ff00')
-        print box
+    face_coordinates = [box[0][0],box[0][1], box[2][0], box[2][1]]
+    return face_coordinates
 
-    im.save(output_filename)
+def crop_square(input_filename, face_coordinates, crop_filename):
+    img = Image.open(input_filename)
+    ## need to update with extracting coordinates from the hightlight faces section
+    img2 = img.crop(face_coordinates)
+    img2.save(crop_filename)
+    return "saved"
 
 
 def main(input_filename, output_filename, max_results):
@@ -46,23 +41,17 @@ def main(input_filename, output_filename, max_results):
         faces = detect_face(image, max_results)
         print('Found {} face{}'.format(
             len(faces), '' if len(faces) == 1 else 's'))
-
         print('Writing to file {}'.format(output_filename))
+
         # Reset the file pointer, so we can read the file again
         image.seek(0)
-        highlight_faces(image, faces, output_filename)
 
-## Currently only works with JPEGs
-main('test.jpg', 'a.jpg',4)
+        face_coordinates = highlight_faces(image, faces)
+        crop_square(input_filename, face_coordinates, output_filename)
 
 
-def crop_square(input_filename, output_filename, crop_filename, max_results):
-    main(input_filename,output_filename, crop_filename, max_results)
-    img = Image.open(output_filename)
-    ## need to update with extracting coordinates from the hightlight faces section
-    img2 = img.crop((192,110,601,587))
-    img2.save(crop_filename)
 
+main('test.jpg', 'test_out.jpg', 4)
 
 
 
