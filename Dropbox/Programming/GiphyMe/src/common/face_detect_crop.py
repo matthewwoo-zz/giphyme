@@ -53,7 +53,6 @@ def outline_face_image(input_filename,max_results=1):
         faces = detect_face(image, max_results)
         image.seek(0)
         face_coordinates = outline_face(faces)
-        print face_coordinates
     return face_coordinates
 
 def resize_image(input_filename,output_filename, face_coordinates):
