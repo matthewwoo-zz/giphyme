@@ -35,7 +35,7 @@ def create_gif(gif_images, output_filename):
         images.append(imageio.imread(filename))
     imageio.mimsave(output_filename, images)
 
-gif_images = expand_gif('source.gif')
+gif_images = expand_gif('giphy.gif')
 create_gif(gif_images, 'new.gif')
 
 

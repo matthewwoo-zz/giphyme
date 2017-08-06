@@ -48,12 +48,17 @@ def detect_crop(input_filename, output_filename, max_results):
         face_coordinates = outline_face(faces)
         crop_face(input_filename, face_coordinates, output_filename)
 
-def outline_face_image(input_filename,max_results=1):
+def outline_face_image(input_filename,max_results=3):
     with open(input_filename, 'rb') as image:
         faces = detect_face(image, max_results)
-        image.seek(0)
-        face_coordinates = outline_face(faces)
-    return face_coordinates
+        if faces.__len__() == 0:
+            return False
+        else:
+            print('Found {} face{}'.format(
+                len(faces), '' if len(faces) == 1 else 's'))
+            image.seek(0)
+            face_coordinates = outline_face(faces)
+        return face_coordinates
 
 def resize_image(input_filename,output_filename, face_coordinates):
     height = face_coordinates[3] - face_coordinates[1]
@@ -63,6 +68,7 @@ def resize_image(input_filename,output_filename, face_coordinates):
     img = Image.open(input_filename)
     resize_img = img.resize((width, height), resample=0)
     resize_img.save(output_filename)
+
 
 # face_coordinates = [10,10,100,70]
 # resize_image('test_crop.jpg','test_resize.jpg',face_coordinates)

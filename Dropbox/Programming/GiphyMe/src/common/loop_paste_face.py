@@ -21,24 +21,27 @@ Single Paste
 
 
 seflie_image = fc.detect_crop('test.jpg','test_crop.jpg',1)
-gif_images = gm.expand_gif('source.gif')
+gif_images = gm.expand_gif('giphy.gif')
 new_gif_images =[]
 
+i = 0
 for filename in gif_images:
-    print filename
-    gif_face_coordinates = fc.outline_face_image(filename)
-    resize_selfie_image = fc.resize_image('test_crop.jpg', 'test_resize.png', gif_face_coordinates)
-    selfie = Image.open('test_resize.png').convert('RGBA')
-    gif_image = Image.open(filename).convert('RGBA')
-    gif_face_coordinates = fc.outline_face_image(filename)
-    gif_image.paste(selfie, (gif_face_coordinates[0], gif_face_coordinates[1],gif_face_coordinates[2],gif_face_coordinates[3]))
-    i = 0
-    gif_image.save('giphy_me_%d.png' % i)
-    new_gif_images.append('giphy_me_%d.png' % i)
-    i += 1
+    try:
+        print filename
+        gif_face_coordinates = fc.outline_face_image(filename)
+        resize_selfie_image = fc.resize_image('test_crop.jpg', 'test_resize.png', gif_face_coordinates)
+        selfie = Image.open('test_resize.png').convert('RGBA')
+        gif_image = Image.open(filename).convert('RGBA')
+        gif_face_coordinates = fc.outline_face_image(filename)
+        gif_image.paste(selfie, (gif_face_coordinates[0], gif_face_coordinates[1],gif_face_coordinates[2],gif_face_coordinates[3]))
+        gif_image.save('giphy_me_%d.png' % i)
+        new_gif_images.append('giphy_me_%d.png' % i)
+        i += 1
+    except:
+        pass
 
 
-gm.create_gif(new_gif_images,'giphy_me.gif')
+gm.create_gif(new_gif_images,'giphy_me_1.gif')
 
 
 

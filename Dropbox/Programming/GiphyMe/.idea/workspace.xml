@@ -19,8 +19,8 @@
     <SUITE FILE_PATH="coverage/GiphyMe$demo_face_detection_app.coverage" NAME="demo_face_detection_app Coverage Results" MODIFIED="1495207757898" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
     <SUITE FILE_PATH="coverage/GiphyMe$demo_vision_app.coverage" NAME="demo_vision_app Coverage Results" MODIFIED="1489592582834" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
     <SUITE FILE_PATH="coverage/GiphyMe$Vision.coverage" NAME="Vision Coverage Results" MODIFIED="1499350499448" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/common" />
-    <SUITE FILE_PATH="coverage/GiphyMe$face_sq_outline.coverage" NAME="face_sq_outline Coverage Results" MODIFIED="1502052670336" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/common" />
-    <SUITE FILE_PATH="coverage/GiphyMe$loop_paste_face.coverage" NAME="loop_paste_face Coverage Results" MODIFIED="1502056079596" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/common" />
+    <SUITE FILE_PATH="coverage/GiphyMe$face_sq_outline.coverage" NAME="face_sq_outline Coverage Results" MODIFIED="1502056988481" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/common" />
+    <SUITE FILE_PATH="coverage/GiphyMe$loop_paste_face.coverage" NAME="loop_paste_face Coverage Results" MODIFIED="1502058668951" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/common" />
     <SUITE FILE_PATH="coverage/GiphyMe$Ex_FaceDraw.coverage" NAME="Ex_FaceDraw Coverage Results" MODIFIED="1497537835805" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/Scrap" />
     <SUITE FILE_PATH="coverage/GiphyMe$test.coverage" NAME="test Coverage Results" MODIFIED="1498142983336" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/common" />
     <SUITE FILE_PATH="coverage/GiphyMe$paste_face.coverage" NAME="paste_face Coverage Results" MODIFIED="1502054160717" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/common" />
@@ -30,14 +30,14 @@
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.52344495">
+    <splitter split-orientation="horizontal" split-proportion="0.5860401">
       <split-first>
         <leaf>
           <file leaf-file-name="face_detect_crop.py" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/common/face_detect_crop.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="615">
-                  <caret line="53" column="8" lean-forward="false" selection-start-line="53" selection-start-column="8" selection-end-line="53" selection-end-column="21" />
+                <state relative-caret-position="1050">
+                  <caret line="70" column="0" lean-forward="false" selection-start-line="70" selection-start-column="0" selection-end-line="70" selection-end-column="0" />
                   <folding>
                     <element signature="e#0#32#0" expanded="true" />
                   </folding>
@@ -48,8 +48,8 @@
           <file leaf-file-name="gif_maker.py" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/common/gif_maker.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="270">
-                  <caret line="18" column="0" lean-forward="true" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+                <state relative-caret-position="555">
+                  <caret line="37" column="30" lean-forward="false" selection-start-line="37" selection-start-column="30" selection-end-line="37" selection-end-column="30" />
                   <folding>
                     <element signature="e#0#32#0" expanded="true" />
                   </folding>
@@ -57,29 +57,15 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="gif41.png" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/common/gif41.png">
+          <file leaf-file-name="giphy.gif" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/common/giphy.gif">
               <provider selected="true" editor-type-id="images">
                 <state />
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="gif40.png" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/common/gif40.png">
-              <provider selected="true" editor-type-id="images">
-                <state />
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="gif42.png" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/common/gif42.png">
-              <provider selected="true" editor-type-id="images">
-                <state />
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="gif43.png" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/common/gif43.png">
+          <file leaf-file-name="giphy_me.gif" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/common/giphy_me.gif">
               <provider selected="true" editor-type-id="images">
                 <state />
               </provider>
@@ -92,8 +78,8 @@
           <file leaf-file-name="paste_face.py" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/common/paste_face.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="480">
-                  <caret line="32" column="0" lean-forward="false" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
+                <state relative-caret-position="270">
+                  <caret line="18" column="0" lean-forward="false" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
                   <folding>
                     <element signature="e#0#21#0" expanded="true" />
                   </folding>
@@ -104,19 +90,12 @@
           <file leaf-file-name="loop_paste_face.py" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/common/loop_paste_face.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="660">
-                  <caret line="44" column="0" lean-forward="false" selection-start-line="44" selection-start-column="0" selection-end-line="44" selection-end-column="0" />
+                <state relative-caret-position="360">
+                  <caret line="45" column="0" lean-forward="false" selection-start-line="45" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
                   <folding>
                     <element signature="e#0#21#0" expanded="true" />
                   </folding>
                 </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="giphy_me_0.png" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/common/giphy_me_0.png">
-              <provider selected="true" editor-type-id="images">
-                <state />
               </provider>
             </entry>
           </file>
@@ -186,10 +165,10 @@
         <option value="$PROJECT_DIR$/src/common/test.py" />
         <option value="$PROJECT_DIR$/src/common/face_sq_outline.py" />
         <option value="$PROJECT_DIR$/src/common/gif_process.py" />
-        <option value="$PROJECT_DIR$/src/common/gif_maker.py" />
         <option value="$PROJECT_DIR$/src/common/paste_face.py" />
-        <option value="$PROJECT_DIR$/src/common/face_detect_crop.py" />
+        <option value="$PROJECT_DIR$/src/common/gif_maker.py" />
         <option value="$PROJECT_DIR$/src/common/loop_paste_face.py" />
+        <option value="$PROJECT_DIR$/src/common/face_detect_crop.py" />
       </list>
     </option>
   </component>
@@ -200,10 +179,9 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="1" />
     <option name="y" value="23" />
-    <option name="width" value="2555" />
-    <option name="height" value="1417" />
+    <option name="width" value="1680" />
+    <option name="height" value="1027" />
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
@@ -649,8 +627,8 @@
     <recent_temporary>
       <list size="5">
         <item index="0" class="java.lang.String" itemvalue="Python.loop_paste_face" />
-        <item index="1" class="java.lang.String" itemvalue="Python.paste_face" />
-        <item index="2" class="java.lang.String" itemvalue="Python.face_sq_outline" />
+        <item index="1" class="java.lang.String" itemvalue="Python.face_sq_outline" />
+        <item index="2" class="java.lang.String" itemvalue="Python.paste_face" />
         <item index="3" class="java.lang.String" itemvalue="Python.gif_process" />
         <item index="4" class="java.lang.String" itemvalue="Python.Vision" />
       </list>
@@ -679,17 +657,17 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="1" y="23" width="2555" height="1417" extended-state="6" />
-    <editor active="true" />
+    <frame x="0" y="23" width="1680" height="1027" extended-state="6" />
+    <editor active="false" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.07600477" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32981133" sideWeight="0.49676898" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32981133" sideWeight="0.5240748" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26434678" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32941177" sideWeight="0.48412699" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.46524063" sideWeight="0.52625155" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32981133" sideWeight="0.49353796" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32941177" sideWeight="0.49353796" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23245282" sideWeight="0.49353796" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32830188" sideWeight="0.47592518" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23208556" sideWeight="0.4908425" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.46524063" sideWeight="0.47374848" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32981133" sideWeight="0.49353796" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -736,10 +714,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/common/test_point_1.jpg" />
-    <entry file="file://$PROJECT_DIR$/src/common/test_2.jpg" />
-    <entry file="file://$PROJECT_DIR$/src/common/test_square.jpg" />
-    <entry file="file://$PROJECT_DIR$/src/common/test_square_crop.jpg" />
     <entry file="file://$PROJECT_DIR$/src/common/test.py" />
     <entry file="file://$PROJECT_DIR$/src/common/a.jpg" />
     <entry file="file://$PROJECT_DIR$/src/common/output.gif" />
@@ -884,16 +858,6 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/common/paste_face.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
-          <caret line="32" column="0" lean-forward="false" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#21#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/common/giphy_me_0.png">
       <provider selected="true" editor-type-id="images">
         <state />
@@ -904,26 +868,6 @@
         <state relative-caret-position="407">
           <caret line="1354" column="0" lean-forward="false" selection-start-line="1354" selection-start-column="0" selection-end-line="1354" selection-end-column="0" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/common/loop_paste_face.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="660">
-          <caret line="44" column="0" lean-forward="false" selection-start-line="44" selection-start-column="0" selection-end-line="44" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#21#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/common/gif_maker.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="18" column="0" lean-forward="true" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#32#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -947,12 +891,62 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/common/face_detect_crop.py">
+    <entry file="file://$PROJECT_DIR$/src/common/giphy_me_7.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/common/giphy_me_6.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/common/paste_face.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="615">
-          <caret line="53" column="8" lean-forward="false" selection-start-line="53" selection-start-column="8" selection-end-line="53" selection-end-column="21" />
+        <state relative-caret-position="270">
+          <caret line="18" column="0" lean-forward="false" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#21#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/common/gif_maker.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="555">
+          <caret line="37" column="30" lean-forward="false" selection-start-line="37" selection-start-column="30" selection-end-line="37" selection-end-column="30" />
           <folding>
             <element signature="e#0#32#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/common/giphy.gif">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/common/giphy_me.gif">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/common/face_detect_crop.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1050">
+          <caret line="70" column="0" lean-forward="false" selection-start-line="70" selection-start-column="0" selection-end-line="70" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#32#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/common/loop_paste_face.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="45" column="0" lean-forward="false" selection-start-line="45" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#21#0" expanded="true" />
           </folding>
         </state>
       </provider>
