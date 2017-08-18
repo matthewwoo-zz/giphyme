@@ -63,7 +63,11 @@ class FaceDraw(object):
             'chin_left_x': face.landmarks.chin_left_gonion.position.x_coordinate,
             'chin_left_y': face.landmarks.chin_left_gonion.position.y_coordinate,
             'chin_right_x': face.landmarks.chin_right_gonion.position.x_coordinate,
-            'chin_right_y': face.landmarks.chin_right_gonion.position.y_coordinate
+            'chin_right_y': face.landmarks.chin_right_gonion.position.y_coordinate,
+            'right_ear_x': face.landmarks.right_ear_traigon.position.x_coordinate,
+            'right_ear_y': face.landmarks.right_ear_traigon.position.y_coordinate,
+            'left_ear_x': face.landmarks.left_ear_traigon.position.x_coordinate,
+            'left_ear_y': face.landmarks.left_ear_traigon.position.y_coordinate
         }
 
         face_marks_2 = {

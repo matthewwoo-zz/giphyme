@@ -1,6 +1,6 @@
 from PIL import Image
 
-import src.common.face_detect_crop as fc
+import src.common.face_methods as fc
 import src.common.gif_maker as gm
 
 '''
