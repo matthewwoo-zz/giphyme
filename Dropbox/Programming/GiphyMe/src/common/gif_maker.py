@@ -45,11 +45,8 @@ def test_gif(input_filename):
         frame.save(test_folder +'/gif%d.png' % i, **frame.info)
         gif_images.append('gif%d.png' % i)
     print os.listdir(test_folder)
+    print test_folder
     return gif_images, test_folder
-
-
-
-test_gif('giphy.gif')
 
 
 # test = expand_gif('new.gif')
