@@ -1,5 +1,7 @@
 from PIL import Image, ImageDraw
+import tempfile as tp
 import imageio
+import os
 
 
 def iter_frames(im):
@@ -35,7 +37,20 @@ def create_gif(gif_images, output_filename):
         images.append(imageio.imread(filename))
     imageio.mimsave(output_filename, images)
 
-test = expand_gif('new.gif')
-create_gif(test,'new_1.gif')
+def test_gif(input_filename):
+    im = Image.open(input_filename)
+    test_folder = tp.mkdtemp()
+    gif_images = []
+    for i, frame in enumerate(iter_frames(im)):
+        frame.save(test_folder +'/gif%d.png' % i, **frame.info)
+        gif_images.append('gif%d.png' % i)
+    print os.listdir(test_folder)
+    return gif_images, test_folder
 
 
+
+test_gif('giphy.gif')
+
+
+# test = expand_gif('new.gif')
+# create_gif(test,'new_1.gif')

@@ -40,4 +40,4 @@ def giphy_me(selfie_img, gif):
     gm.create_gif(new_gif_images,'giphy_me_1.gif')
 
 
-giphy_me('test.jpg','new.gif')
+giphy_me('anthony.jpg','chris.gif')
