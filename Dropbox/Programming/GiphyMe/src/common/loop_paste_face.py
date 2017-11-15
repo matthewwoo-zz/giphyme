@@ -46,8 +46,7 @@ Single Paste
 def giphy_me_test(selfie_img, gif):
     selfie_image_cd = fc.outline_face(selfie_img, 1)
     fc.crop_face(input_filename=selfie_img, face_coordinates=selfie_image_cd, output_filename="selfie_crop.jpg")
-    gif_images, test_folder = gm.test_gif(gif)
-    print test_folder
+    gif_images, test_folder = gm.expand_gif(gif)
     new_gif_images = []
     i = 0
     for filename in gif_images:
@@ -65,6 +64,14 @@ def giphy_me_test(selfie_img, gif):
         except:
             pass
     gm.create_gif(new_gif_images,'giphy_me_1.gif')
-    print os.listdir(test_folder)
+    files = ['selfie_crop.jpg','selfie_resize.png']
+    clean(files)
+    return 200
+
+def clean(files):
+    path = os.getcwd()
+    for i in files:
+        os.remove(path+"/"+i)
+    return 200
 
 giphy_me_test('Profile_Photo.png','giphy.gif')
