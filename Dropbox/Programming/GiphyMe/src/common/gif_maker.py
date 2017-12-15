@@ -20,14 +20,14 @@ def iter_frames(im):
         pass
 
 
-## Expand gif into frames with temp folder
+## Expand gifs into frames with temp folder
 def expand_gif(input_filename):
     im = Image.open(input_filename)
     test_folder = tp.mkdtemp()
     gif_images = []
     for i, frame in enumerate(iter_frames(im)):
-        frame.save(test_folder + '/gif%d.png' % i, **frame.info)
-        gif_images.append('gif%d.png' % i)
+        frame.save(test_folder + '/gifs%d.png' % i, **frame.info)
+        gif_images.append('gifs%d.png' % i)
     print os.listdir(test_folder)
     print test_folder
     return gif_images, test_folder
@@ -41,14 +41,14 @@ def create_gif(gif_images, output_filename):
     imageio.mimsave(output_filename, images)
 
 
-## Expand gif into frames old method with no temp folders
+## Expand gifs into frames old method with no temp folders
 # def expand_gif_old(input_filename):
 #     im = Image.open(input_filename)
 #     gif_images = []
 #     for i, frame in enumerate(iter_frames(im)):
-#         frame.save('gif%d.png' % i, **frame.info)
-#         gif_images.append('gif%d.png' % i)
+#         frame.save('gifs%d.png' % i, **frame.info)
+#         gif_images.append('gifs%d.png' % i)
 #     return gif_images
 
-# test = expand_gif('new.gif')
-# create_gif(test,'new_1.gif')
+# test = expand_gif('new.gifs')
+# create_gif(test,'new_1.gifs')

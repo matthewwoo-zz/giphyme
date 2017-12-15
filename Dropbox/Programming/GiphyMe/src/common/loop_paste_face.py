@@ -18,10 +18,10 @@ Single Paste
 - Paste resized cropped seflie on GIF Image
 '''
 
-# def giphy_me(selfie_img, gif):
+# def giphy_me(selfie_img, gifs):
 #     selfie_image_cd = fc.outline_face(selfie_img, 1)
 #     fc.crop_face(input_filename=selfie_img, face_coordinates=selfie_image_cd, output_filename="selfie_crop.jpg")
-#     gif_images = gm.expand_gif(gif)
+#     gif_images = gm.expand_gif(gifs)
 #     new_gif_images =[]
 #     i = 0
 #     for filename in gif_images:
@@ -38,10 +38,10 @@ Single Paste
 #             i += 1
 #         except:
 #             pass
-#     gm.create_gif(new_gif_images,'giphy_me_1.gif')
+#     gm.create_gif(new_gif_images,'giphy_me_1.gifs')
 #
 #
-# giphy_me('anthony.jpg','chris.gif')
+# giphy_me('anthony.jpg','chris.gifs')
 
 def giphy_me_test(selfie_img, gif):
     selfie_image_cd = fc.outline_face(selfie_img, 1)
@@ -63,7 +63,7 @@ def giphy_me_test(selfie_img, gif):
             i += 1
         except:
             pass
-    gm.create_gif(new_gif_images,'giphy_me_1.gif')
+    gm.create_gif(new_gif_images,'giphy_me_1.gifs')
     files = ['selfie_crop.jpg','selfie_resize.png']
     clean(files)
     return 200
@@ -74,4 +74,4 @@ def clean(files):
         os.remove(path+"/"+i)
     return 200
 
-giphy_me_test('Profile_Photo.png','giphy.gif')
+giphy_me_test('Profile_Photo.png','giphy.gifs')

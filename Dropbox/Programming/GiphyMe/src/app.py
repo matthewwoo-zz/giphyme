@@ -1,21 +1,30 @@
 import os
+
 from flask import Flask, request, redirect, url_for, render_template
 from flask import flash
 from werkzeug.utils import secure_filename
 
-UPLOAD_FOLDER = "/Users/mattw/Dropbox/Programming/GiphyMe/src/profile_photos"
-ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
+import src.config as c
+from src.shared.models import db
 
 app = Flask(__name__)
-app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+db.init_app(app)
+app.config['UPLOAD_FOLDER'] = c.UPLOAD_FOLDER
+app.config['SQLALCHEMY_DATABASE_URI'] = c.SQLALCHEMY_DATABASE_URI
 
-def allowed_file(filename):
-    return '.' in filename and \
-           filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
+@app.before_first_request
+def setup():
+    db.create_all()
 
 @app.route('/')
 def hello():
     return render_template('home.html')
+
+
+def allowed_file(filename):
+    return '.' in filename and \
+           filename.rsplit('.', 1)[1].lower() in c.ALLOWED_EXTENSIONS
+
 
 @app.route('/upload', methods=['GET','POST'])
 def upload_file():
@@ -37,6 +46,13 @@ def upload_file():
             return redirect(url_for('upload_file',
                                     filename=filename))
     return render_template('upload.html')
+
+def create_app():
+    app = Flask(__name__)
+    db.init_app(app)
+    with app.test_request_context():
+        db.create_all()
+    return app
 
 
 if __name__ == '__main__':

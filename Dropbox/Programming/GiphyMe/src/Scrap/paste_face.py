@@ -19,7 +19,7 @@ Single Paste
 
 
 seflie_image = fc.detect_crop('test.jpg','test_crop.jpg',1)
-gm.expand_gif('source.gif')
+gm.expand_gif('source.gifs')
 gif_face_coordinates = fc.outline_face_image('gif0.png')
 print gif_face_coordinates[0]
 print gif_face_coordinates[1]
