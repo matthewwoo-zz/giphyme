@@ -8,9 +8,24 @@ import src.config as c
 from src.shared.models import db
 
 app = Flask(__name__)
-db.init_app(app)
 app.config['UPLOAD_FOLDER'] = c.UPLOAD_FOLDER
 app.config['SQLALCHEMY_DATABASE_URI'] = c.SQLALCHEMY_DATABASE_URI
+db.init_app(app)
+with app.test_request_context():
+    db.create_all()
+
+class Gif(db.Model):
+    __tablename__ = "gifs"
+    id = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.String)
+    url = db.Column(db.String)
+
+    def __init__(self, title=None, url=None):
+        self.title = title
+        self.url = url
+
+    def __repr__(self):
+        return "Title: {}, URL: {}, ID: {}".format(self.title, self.url, self.id)
 
 @app.before_first_request
 def setup():
@@ -18,6 +33,7 @@ def setup():
 
 @app.route('/')
 def hello():
+    print db.get_tables_for_bind()
     return render_template('home.html')
 
 
