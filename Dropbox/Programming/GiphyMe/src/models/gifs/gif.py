@@ -1,5 +1,4 @@
-from src.shared.models import db
-
+from src.app import db
 
 class Gif(db.Model):
     __tablename__ = "gifs"

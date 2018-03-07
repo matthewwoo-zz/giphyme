@@ -2,6 +2,7 @@ import io
 import os
 import json
 from google.cloud import vision
+from src.app import db
 
 def Selfie(object):
 
