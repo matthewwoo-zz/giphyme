@@ -11,7 +11,7 @@ app.config['UPLOAD_FOLDER'] = c.UPLOAD_FOLDER
 app.config['SQLALCHEMY_DATABASE_URI'] = c.SQLALCHEMY_DATABASE_URI
 
 db = SQLAlchemy(app)
-
+#
 class Gif(db.Model):
     __tablename__ = "gifs"
     id = db.Column(db.Integer, primary_key=True)
@@ -52,9 +52,10 @@ class Giphyme(db.Model):
 
 @app.route('/')
 def hello():
-    db.create_all()
+    # db.create_all()
     gif_1 = Gif(title="Test Gif", url="www.test.com")
     db.session.add(gif_1)
+    db.session.commit()
     print db.get_tables_for_bind()
     return render_template('home.html')
 
