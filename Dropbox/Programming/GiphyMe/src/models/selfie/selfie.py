@@ -2,22 +2,13 @@ import io
 import os
 import json
 from google.cloud import vision
-from src.app import db
+from src.db import db
 
-def Selfie(object):
-
-    def __init__(self, name, emotion, image):
-        self.name = name
-        self.emotion = emotion
-        self.image = image
-        pass
-
-    def json(self):
-        return {
-            'name': self.name,
-            'emotion': self.emotion,
-            'image': self.image
-        }
+class Selfie(db.Model):
+    __tablename__ = "selfie"
+    id = db.Column(db.Integer, primary_key=True)
+    emotion = db.Column(db.String)
+    image = db.Column(db.String)
 
 
     # def coordinates(file_name):

@@ -1,6 +1,6 @@
 import io
 import os
-import src.Credentials
+import src.credentials
 
 
 from google.cloud import vision
