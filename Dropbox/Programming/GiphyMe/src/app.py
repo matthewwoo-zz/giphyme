@@ -4,6 +4,7 @@ from flask import Flask, request, redirect, url_for, render_template
 from flask import flash
 from src.forms import LoginForm, SignupForm
 from werkzeug.utils import secure_filename
+from src.models.gifs.gif import Gif
 
 import src.config as c
 
@@ -26,6 +27,12 @@ def login():
 def signup():
     form = SignupForm()
     return render_template('signup.html', title='Sign Up', form=form)
+
+@app.route('/query')
+def query_gif():
+    print Gif.query.all()
+    return "Query"
+
 
 
 def allowed_file(filename):

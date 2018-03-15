@@ -9,6 +9,10 @@ class Selfie(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     emotion = db.Column(db.String)
     image = db.Column(db.String)
+    user_id = db.Column()
+
+    def __repr__(self):
+        return "Emotion: {}, URL: {}, ID: {}".format(self.title, self.url, self.id)
 
 
     # def coordinates(file_name):

@@ -12,3 +12,5 @@ app.config['SQLALCHEMY_DATABASE_URI'] = c.SQLALCHEMY_DATABASE_URI
 
 db = SQLAlchemy(app)
 
+from src.models.gifs.gif import Gif
+
