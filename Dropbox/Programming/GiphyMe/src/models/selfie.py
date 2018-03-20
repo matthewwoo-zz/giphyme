@@ -2,9 +2,9 @@ import io
 import os
 import json
 from google.cloud import vision
-from src.db import db
+from .base  import db, Base
 
-class Selfie(db.Model):
+class Selfie(Base):
     __tablename__ = "selfie"
     id = db.Column(db.Integer, primary_key=True)
     emotion = db.Column(db.String)

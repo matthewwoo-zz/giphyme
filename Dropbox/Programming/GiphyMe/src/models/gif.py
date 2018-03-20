@@ -1,6 +1,6 @@
-from src.db import db
+from .base  import db, Base
 
-class Gif(db.Model):
+class Gif(Base):
     __tablename__ = "gifs"
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String)

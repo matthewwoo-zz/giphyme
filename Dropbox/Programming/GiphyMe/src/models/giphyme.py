@@ -1,6 +1,6 @@
-from src.db import db
+from .base  import db, Base
 
-class Giphyme(db.Model):
+class Giphyme(Base):
     __tablename__ = "giphyme"
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String)

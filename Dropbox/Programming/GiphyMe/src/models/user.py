@@ -1,6 +1,6 @@
-from src.db import db
+from .base import db, Base
 
-class User(db.Model):
+class User(Base):
     __tablename__ = "user"
     id = db.Column(db.Integer, primary_key=True)
     email = db.Column(db.String, unique=True)
