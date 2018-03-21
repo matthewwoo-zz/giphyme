@@ -3,16 +3,18 @@ import os
 from flask import Flask, request, redirect, url_for, render_template
 from flask import flash
 from flask_sqlalchemy import SQLAlchemy
+from flask_migrate import Migrate
 from werkzeug.utils import secure_filename
+from config import Config
 
 import src.config as c
 from src.forms import LoginForm, SignupForm
 
 app = Flask(__name__)
-app.config['UPLOAD_FOLDER'] = c.UPLOAD_FOLDER
-app.config['SQLALCHEMY_DATABASE_URI'] = c.SQLALCHEMY_DATABASE_URI
-app.config['SECRET_KEY'] = c.SECRET_KEY
-# db = SQLAlchemy(app)
+app.config.from_object(Config)
+db = SQLAlchemy(app)
+import models
+migrate = Migrate(app,db)
 
 @app.route('/')
 def hello():
@@ -28,10 +30,10 @@ def signup():
     form = SignupForm()
     return render_template('signup.html', title='Sign Up', form=form)
 
-@app.route('/query')
-def query_gif():
-    print Gif.query.all()
-    return "Query"
+# @app.route('/query')
+# def query_gif():
+#     print Gif.query.all()
+#     return "Query"
 
 
 
