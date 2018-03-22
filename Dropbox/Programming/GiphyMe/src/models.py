@@ -6,14 +6,15 @@ class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     email = db.Column(db.String, unique=True)
     username = db.Column(db.String, unique=True)
-    password_hash = db.Column(db.String)
+    password_hash = db.Column(db.String, unique=True)
     timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
-    selfie = db.relationship('Selfie', backref='user', lazy='dynamic')
-    gif = db.relationship('Gif', backref='user', lazy='dynamic')
-    giphyme = db.relationship('GiphyMe', backref='user', lazy='dynamic')
+    selfie_id = db.relationship('Selfie', backref='user', lazy='dynamic')
+    gif_id = db.relationship('Gif', backref='user', lazy='dynamic')
+    giphyme_id = db.relationship('Giphyme', backref='user', lazy='dynamic')
 
     def __repr__(self):
         return "Username: {}, Email: {}, ID: {}".format(self.username, self.email, self.id)
+
 
 class Selfie(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -21,7 +22,7 @@ class Selfie(db.Model):
     url = db.Column(db.String)
     timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
-    giphyme = db.relationship('Giphyme', backref='selfie', lazy='dynamic')
+    giphyme_id = db.relationship('Giphyme', backref='selfie', lazy='dynamic')
 
     def __repr__(self):
         return "Emotion: {}, URL: {}, ID: {}".format(self.title, self.url, self.id)
@@ -33,7 +34,7 @@ class Gif(db.Model):
     url = db.Column(db.String)
     timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
-    giphyme = db.relationship('Giphyme', backref='gif', lazy='dynamic')
+    giphyme_id = db.relationship('Giphyme', backref='gif', lazy='dynamic')
 
 
     def __init__(self, title=None, url=None):
@@ -56,6 +57,8 @@ class Giphyme(db.Model):
 
     def __repr__(self):
         return "Title: {}, URL: {}, ID: {}".format(self.title, self.url, self.id)
+
+
 
 
 
