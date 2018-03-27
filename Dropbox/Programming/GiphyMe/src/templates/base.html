@@ -5,6 +5,16 @@
     <title>Giphy Me</title>
 </head>
 <body>
+<div>
+    <a href="{{url_forl('home')}}">Home</a>
+    {% if current_user.is_annoymous %}
+    <a href="{{url_for('login')}}">Login</a>
+    {% else %}
+    <a href="{{url_for('logout')}}">Logout</a>
+    {% endif %}
+</div>
+
+<div>
 <hr>
 {% with messages = get_flashed_messages() %}
 {% if messages %}
@@ -16,5 +26,6 @@
 {% endif %}
 {% endwith %}
 {% block content %}{% endblock %}
+</div>
 </body>
 </html>

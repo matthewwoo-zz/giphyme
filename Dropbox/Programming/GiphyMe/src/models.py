@@ -1,8 +1,14 @@
 from datetime import datetime
-
+from werkzeug.security import generate_password_hash, check_password_hash
+from flask_login import UserMixin
+from src.app import login
 from app import db
 
-class User(db.Model):
+@login.user_loader
+def load_user(id):
+    return User.query.get(int(id))
+
+class User(UserMixin,db.Model):
     id = db.Column(db.Integer, primary_key=True)
     email = db.Column(db.String, unique=True)
     username = db.Column(db.String, unique=True)
@@ -14,6 +20,12 @@ class User(db.Model):
 
     def __repr__(self):
         return "Username: {}, Email: {}, ID: {}".format(self.username, self.email, self.id)
+
+    def set_password(self, password):
+        self.password_hash = generate_password_hash(password)
+
+    def check_password(self, password):
+        return check_password_hash(self.password_hash, password)
 
 
 class Selfie(db.Model):
@@ -57,6 +69,8 @@ class Giphyme(db.Model):
 
     def __repr__(self):
         return "Title: {}, URL: {}, ID: {}".format(self.title, self.url, self.id)
+
+
 
 
 
