@@ -1,12 +1,7 @@
 from datetime import datetime
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
-from src.app import login
 from app import db
-
-@login.user_loader
-def load_user(id):
-    return User.query.get(int(id))
 
 class User(UserMixin,db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -69,14 +64,6 @@ class Giphyme(db.Model):
 
     def __repr__(self):
         return "Title: {}, URL: {}, ID: {}".format(self.title, self.url, self.id)
-
-
-
-
-
-
-
-
 
 
 

@@ -10,15 +10,21 @@ from werkzeug.utils import secure_filename
 from config import Config
 
 
+
 import src.config as c
 from src.forms import LoginForm, SignupForm
 
 app = Flask(__name__)
 app.config.from_object(Config)
+login = LoginManager(app)
+login.login_view = 'login'
 db = SQLAlchemy(app)
-import models
 migrate = Migrate(app,db)
 
+
+@login.user_loader
+def load_user(id):
+    return User.query.get(int(id))
 
 @app.route('/')
 def hello():
@@ -29,16 +35,19 @@ def login():
     if current_user.is_authenticated:
         return redirect(url_for('home'))
     form = LoginForm()
+    print "Test"
     if form.validate_on_submit():
         user = User.query.filter_by(username=form.username.data).first()
-        if user is None or not user.check_password(form.password.data):
-            flash('Invalid username or password')
-            return redirect(url_for('login'))
-        login_user(user, remember=form.remember_me.data)
-        next_page = request.args.get('next')
-        if not next_page or url_parse(next_page).netloc != '':
-            next_page = url_for('home')
-        return redirect(next_page)
+        print user
+        # if user is None or not user.check_password(form.password.data):
+        #     flash('Invalid username or password')
+        #     return redirect(url_for('login'))
+        # login_user(user, remember=form.remember_me.data)
+        # return redirect(url_for('home'))
+        # next_page = request.args.get('next')
+        # if not next_page or url_parse(next_page).netloc != '':
+        #     next_page = url_for('home')
+        # return redirect(next_page)
     return render_template('login.html', title='Sign In', form=form)
 
 @login_required
@@ -49,7 +58,7 @@ def welcome():
 @app.route('/logout')
 def logout():
     logout_user()
-    return redirect(url_for('home'))
+    return redirect(url_for('.index'))
 
 @app.route('/signup')
 def signup():
@@ -88,6 +97,5 @@ def upload_file():
                                     filename=filename))
     return render_template('upload.html')
 
-from src.models import User
-login = LoginManager(app)
-login.login_view = 'login'
+import models
+User = models.User

@@ -6,7 +6,7 @@
 </head>
 <body>
 <div>
-    <a href="{{url_forl('home')}}">Home</a>
+    <a href="{{url_for('welcome')}}">Home</a>
     {% if current_user.is_annoymous %}
     <a href="{{url_for('login')}}">Login</a>
     {% else %}
