@@ -9,17 +9,25 @@
 
         <p>
             {{ form.username.label }}<br>
-            {{ form.username(size=32) }}
+            {{ form.username(size=32) }}<br>
+            {% for error in form.username.errors %}
+            <span style="color: red;">[{{error}}]</span>
         </p>
         <p>
             {{ form.email.label }}<br>
-            {{ form.email(size=32) }}
+            {{ form.email(size=32) }}<br>
+            <span style="color: red;">[{{error}}]</span>
         </p>
         <p>
             {{ form.password.label }}<br>
-            {{ form.password(size=32) }}
+            {{ form.password(size=32) }}<br>
+            <span style="color: red;">[{{error}}]</span>
         </p>
-        <p>{{ form.remember_me() }} {{ form.remember_me.label }}</p>
+        <p>
+            {{ form.password2.label }}<br>
+            {{ form.password2(size=32) }}<br>
+            <span style="color: red;">[{{error}}]</span>
+        </p>
         <p>{{ form.submit() }}</p>
     </form>
 </div>
