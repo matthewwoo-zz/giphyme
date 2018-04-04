@@ -1,6 +1,6 @@
 import os
 
-from flask import Flask, request, redirect, url_for, render_template
+from flask import Flask, request, redirect, url_for, render_template, send_from_directory
 from flask import flash
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
@@ -59,9 +59,18 @@ def logout():
     logout_user()
     return redirect(url_for('home'))
 
-@app.route('/signup')
+@app.route('/signup', methods=['GET','POST'])
 def signup():
+    if current_user.is_authenticated:
+        return redirect(url_for('home'))
     form = SignupForm()
+    if form.validate_on_submit():
+        user = User(username=form.username.data, email=form.email.data)
+        user.set_password(form.password.data)
+        db.session.add(user)
+        db.session.commit()
+        flash('Congratulations %s you have signed up with Giiphy me ' % form.username.data)
+        return redirect(url_for('login'))
     return render_template('signup.html', title='Sign Up', form=form)
 
 # @app.route('/query')
@@ -73,7 +82,7 @@ def signup():
 
 def allowed_file(filename):
     return '.' in filename and \
-           filename.rsplit('.', 1)[1].lower() in c.ALLOWED_EXTENSIONS
+           filename.rsplit('.', 1)[1].lower() in Config.ALLOWED_EXTENSIONS
 
 @app.route('/upload', methods=['GET','POST'])
 def upload_file():
@@ -90,11 +99,23 @@ def upload_file():
             return redirect(request.url)
         if file and allowed_file(file.filename):
             filename = secure_filename(file.filename)
-            file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+            file.save(os.path.join(Config.UPLOAD_FOLDER, filename))
+            print os.path.join(Config.UPLOAD_FOLDER,filename)
             # the reason why it's 'upload_file' and not 'upload' is that url_for builds url based on the function and not the route
-            return redirect(url_for('upload_file',
+            return redirect(url_for('uploaded_file',
                                     filename=filename))
     return render_template('upload.html')
+
+@app.route('/show/<filename>')
+def uploaded_file(filename):
+    filename='http://0.0.0.0:8000/uploads/'+filename
+    return render_template('show.html',filename=filename)
+
+
+@app.route('/uploads/<filename>')
+def send_file(filename):
+    return send_from_directory(Config.UPLOAD_FOLDER, filename)
+
 
 
 import models

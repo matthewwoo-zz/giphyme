@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block content %}
+
+<title>Hello from Flask</title>
+{% if filename %}
+  <h1>some text<img src="{{filename}}"> more text!</h1>
+{% else %}
+  <h1>no image for whatever reason</h1>
+{% endif %}
+{% endblock %}
+
