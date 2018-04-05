@@ -27,13 +27,13 @@ def load_user(id):
 
 
 @app.route('/')
-def hello():
-    return render_template('homepage.html')
+def home():
+    return render_template('home.html')
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if current_user.is_authenticated:
-        return redirect(url_for('home'))
+        return redirect(url_for('profile'))
     form = LoginForm()
     if form.validate_on_submit():
         user = User.query.filter_by(username=form.username.data).first()
@@ -41,18 +41,19 @@ def login():
             flash('Invalid username or password')
             return redirect(url_for('login'))
         login_user(user, remember=form.remember_me.data)
-        return redirect(url_for('home'))
-        next_page = request.args.get('next')
-        if not next_page or url_parse(next_page).netloc != '':
-            next_page = url_for('home')
-        return redirect(next_page)
+        return redirect(url_for('profile', username=form.username.data))
+        # next_page = request.args.get('next')
+        # if not next_page or url_parse(next_page).netloc != '':
+        #     next_page = url_for('profile', username=form.username.data)
+        # return redirect(next_page)
     return render_template('login.html', title='Sign In', form=form)
 
 
 @login_required
-@app.route('/home')
-def home():
-    return render_template('home.html')
+@app.route('/profile/<username>')
+def profile(username):
+    print username
+    return render_template('profile.html',username=username)
 
 @app.route('/logout')
 def logout():
