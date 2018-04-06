@@ -105,7 +105,7 @@ def upload_file():
             # the reason why it's 'upload_file' and not 'upload' is that url_for builds url based on the function and not the route
             return redirect(url_for('uploaded_file',
                                     filename=filename))
-    return render_template('upload.html')
+    return 200
 
 @app.route('/show/<filename>')
 def uploaded_file(filename):

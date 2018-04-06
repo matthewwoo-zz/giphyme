@@ -4,7 +4,25 @@
     <h1>Hi, {{current_user.username}}</h1>
 </div>
 <div>
-    <h2> Selfies </h2>
+    <h2>Selfies</h2>
     <hr>
+    <form action="{{url_for('upload_file')}}"method=post enctype=multipart/form-data>
+      <p><input type=file name=file>
+         <input type=submit value=Upload>
+    </form>
+    <<br>
+    <p>
+        <div img=""></div>
+    </p>
+<div>
+    <h2>Gifs</h2>
+    <hr>
+</div>
+
+<div>
+    <h2>GiphyMes</h2>
+    <hr>
+</div>
+
 </div>
 {% endblock %}
