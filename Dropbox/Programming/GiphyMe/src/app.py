@@ -52,7 +52,7 @@ def login():
 @login_required
 @app.route('/profile/<username>')
 def profile(username):
-    print username
+    print current_user
     return render_template('profile.html',username=username)
 
 @app.route('/logout')
@@ -85,8 +85,10 @@ def allowed_file(filename):
     return '.' in filename and \
            filename.rsplit('.', 1)[1].lower() in Config.ALLOWED_EXTENSIONS
 
+@login_required
 @app.route('/upload', methods=['GET','POST'])
 def upload_file():
+    u = User.query.filter_by(username=current_user.username).first()
     if request.method == 'POST':
         # check if the post request has the file part
         if 'file' not in request.files:
@@ -101,11 +103,16 @@ def upload_file():
         if file and allowed_file(file.filename):
             filename = secure_filename(file.filename)
             file.save(os.path.join(Config.UPLOAD_FOLDER, filename))
-            print os.path.join(Config.UPLOAD_FOLDER,filename)
+            file_path = os.path.join(Config.UPLOAD_FOLDER,filename)
+            s = Selfie(emotion="Happy", url=file_path, user=u)
+            db.session.add(s)
+            db.session.commit()
+            flash('Congratulations you have uploaded your selfie')
             # the reason why it's 'upload_file' and not 'upload' is that url_for builds url based on the function and not the route
-            return redirect(url_for('uploaded_file',
-                                    filename=filename))
-    return 200
+            # return redirect(url_for('uploaded_file',
+            #                         filename=filename))
+            return render_template('profile.html',username=u.username)
+    return render_template('profile.html', username=u.username)
 
 @app.route('/show/<filename>')
 def uploaded_file(filename):
@@ -121,6 +128,7 @@ def send_file(filename):
 
 import models
 User = models.User
+Selfie = models.Selfie
 
 from src.forms import LoginForm, SignupForm
 

@@ -31,8 +31,15 @@ class Selfie(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     giphyme_id = db.relationship('Giphyme', backref='selfie', lazy='dynamic')
 
+    # def __init__(self, emotion=None, url=None, user_id=int,giphyme_id=int):
+    #     self.id = id
+    #     self.emotion = emotion
+    #     self.url = url
+    #     self.user_id = user_id
+    #     self.giphyme_id = giphyme_id
+
     def __repr__(self):
-        return "Emotion: {}, URL: {}, ID: {}".format(self.title, self.url, self.id)
+        return "Emotion: {}, URL: {}, ID: {}".format(self.emotion, self.url, self.id)
 
 class Gif(db.Model):
     id = db.Column(db.Integer, primary_key=True)
