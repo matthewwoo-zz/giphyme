@@ -53,7 +53,14 @@ def login():
 @app.route('/profile/<username>')
 def profile(username):
     print current_user
-    return render_template('profile.html',username=username)
+    u = User.query.filter_by(username=current_user.username).first()
+    s = Selfie.query.filter_by(user_id=u.id).first()
+    print s
+    f = s.url
+    filename = send_from_directory(Config.UPLOAD_FOLDER,f)
+    # f2 = 'http://0.0.0.0:8000/uploads' + f
+    # filename = send_from_directory(Config.UPLOAD_FOLDER,f2)
+    return render_template('profile.html',username=username, filename=filename)
 
 @app.route('/logout')
 def logout():
@@ -117,6 +124,7 @@ def upload_file():
 @app.route('/show/<filename>')
 def uploaded_file(filename):
     filename='http://0.0.0.0:8000/uploads/'+filename
+    print filename
     return render_template('show.html',filename=filename)
 
 

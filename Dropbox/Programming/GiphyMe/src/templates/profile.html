@@ -10,10 +10,15 @@
       <p><input type=file name=file>
          <input type=submit value=Upload>
     </form>
-    <<br>
+    <br>
     <p>
-        <div img=""></div>
+    {% if filename %}
+        <img src="{{filename}}">
+    {% else %}
+    <div>no image for whatever reason</div>
+    {% endif %}
     </p>
+
 <div>
     <h2>Gifs</h2>
     <hr>
