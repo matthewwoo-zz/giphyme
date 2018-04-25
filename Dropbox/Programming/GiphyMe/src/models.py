@@ -27,6 +27,7 @@ class Selfie(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     emotion = db.Column(db.String)
     url = db.Column(db.String)
+    filename = db.Column(db.String)
     timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     giphyme_id = db.relationship('Giphyme', backref='selfie', lazy='dynamic')

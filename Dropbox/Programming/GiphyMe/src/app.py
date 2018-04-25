@@ -54,13 +54,9 @@ def login():
 def profile(username):
     print current_user
     u = User.query.filter_by(username=current_user.username).first()
-    s = Selfie.query.filter_by(user_id=u.id).first()
-    print s
-    f = s.url
-    filename = send_from_directory(Config.UPLOAD_FOLDER,f)
-    # f2 = 'http://0.0.0.0:8000/uploads' + f
-    # filename = send_from_directory(Config.UPLOAD_FOLDER,f2)
-    return render_template('profile.html',username=username, filename=filename)
+    s = Selfie.query.filter_by(user_id=u.id).order_by('-id').first()
+    filename = 'http://0.0.0.0:8000/uploads/' + s.filename
+    return render_template('profile.html', username=username, filename=filename)
 
 @app.route('/logout')
 def logout():
@@ -111,7 +107,7 @@ def upload_file():
             filename = secure_filename(file.filename)
             file.save(os.path.join(Config.UPLOAD_FOLDER, filename))
             file_path = os.path.join(Config.UPLOAD_FOLDER,filename)
-            s = Selfie(emotion="Happy", url=file_path, user=u)
+            s = Selfie(emotion="Happy", url=file_path, user=u, filename=filename)
             db.session.add(s)
             db.session.commit()
             flash('Congratulations you have uploaded your selfie')
