@@ -7,7 +7,7 @@
 <div>
     <h2>Selfies</h2>
     <hr>
-    <form action="{{url_for('upload_file')}}"method=post enctype=multipart/form-data>
+    <form action="{{url_for('upload_selfie')}}"method=post enctype=multipart/form-data>
       <p><input type=file name=file>
          <input type=submit value=Upload>
     </form>
@@ -24,6 +24,10 @@
 <div>
     <h2>Gifs</h2>
     <hr>
+    <form action="{{url_for('upload_gif')}}"method=post enctype=multipart/form-data>
+      <p><input type=file name=file>
+         <input type=submit value=Upload>
+    </form>
 </div>
 
 <div>

@@ -90,7 +90,7 @@ def allowed_file(filename):
 
 @login_required
 @app.route('/upload', methods=['GET','POST'])
-def upload_file():
+def upload_selfie():
     u = User.query.filter_by(username=current_user.username).first()
     if request.method == 'POST':
         # check if the post request has the file part
@@ -117,10 +117,39 @@ def upload_file():
             return render_template('profile.html',username=u.username)
     return render_template('profile.html', username=u.username)
 
+@login_required
+@app.route('/upload', methods=['GET','POST'])
+def upload_gif():
+    u = User.query.filter_by(username=current_user.username).first()
+    if request.method == 'POST':
+        # check if the post request has the file part
+        if 'file' not in request.files:
+            flash('No file part')
+            return redirect(request.url)
+        file = request.files['file']
+        # if user does not select file, browser also
+        # submit a empty part without filename
+        if file.filename == '':
+            flash('No selected file')
+            return redirect(request.url)
+        if file and allowed_file(file.filename):
+            filename = secure_filename(file.filename)
+            file.save(os.path.join(Config.UPLOAD_FOLDER, filename))
+            file_path = os.path.join(Config.UPLOAD_FOLDER,filename)
+            s = Gif(emotion="Happy", url=file_path, user=u, filename=filename)
+            db.session.add(s)
+            db.session.commit()
+            print "commited"
+            flash('Congratulations you have uploaded your gif')
+            # the reason why it's 'upload_file' and not 'upload' is that url_for builds url based on the function and not the route
+            # return redirect(url_for('uploaded_file',
+            #                         filename=filename))
+            return render_template('profile.html',username=u.username)
+    return render_template('profile.html', username=u.username)
+
 @app.route('/show/<filename>')
 def uploaded_file(filename):
     filename='http://0.0.0.0:8000/uploads/'+filename
-    print filename
     return render_template('show.html',filename=filename)
 
 
@@ -133,6 +162,7 @@ def send_file(filename):
 import models
 User = models.User
 Selfie = models.Selfie
+Gif = models.Gif
 
 from src.forms import LoginForm, SignupForm
 
