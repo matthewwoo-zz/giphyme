@@ -55,8 +55,13 @@ def profile(username):
     print current_user
     u = User.query.filter_by(username=current_user.username).first()
     s = Selfie.query.filter_by(user_id=u.id).order_by('-id').first()
-    filename = 'http://0.0.0.0:8000/uploads/' + s.filename
-    return render_template('profile.html', username=username, filename=filename)
+    g = Gif.query.filter_by(user_id=u.id).order_by('-id').first()
+    selfie_filename = 'http://0.0.0.0:8000/uploads/' + s.filename
+    gif_filename = 'http://0.0.0.0:8000/uploads/' + g.filename
+    return render_template('profile.html',
+                           username=username,
+                           selfie_filename=selfie_filename,
+                           gif_filename=gif_filename)
 
 @app.route('/logout')
 def logout():
@@ -89,7 +94,7 @@ def allowed_file(filename):
            filename.rsplit('.', 1)[1].lower() in Config.ALLOWED_EXTENSIONS
 
 @login_required
-@app.route('/upload', methods=['GET','POST'])
+@app.route('/upload_selfie', methods=['GET','POST'])
 def upload_selfie():
     u = User.query.filter_by(username=current_user.username).first()
     if request.method == 'POST':
@@ -118,7 +123,7 @@ def upload_selfie():
     return render_template('profile.html', username=u.username)
 
 @login_required
-@app.route('/upload', methods=['GET','POST'])
+@app.route('/upload_gif', methods=['GET','POST'])
 def upload_gif():
     u = User.query.filter_by(username=current_user.username).first()
     if request.method == 'POST':

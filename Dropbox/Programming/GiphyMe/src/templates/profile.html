@@ -8,13 +8,14 @@
     <h2>Selfies</h2>
     <hr>
     <form action="{{url_for('upload_selfie')}}"method=post enctype=multipart/form-data>
+
       <p><input type=file name=file>
          <input type=submit value=Upload>
     </form>
     <br>
     <p>
-    {% if filename %}
-        <img src="{{filename}}">
+    {% if selfie_filename %}
+        <img src="{{selfie_filename}}">
     {% else %}
     <div>no image for whatever reason</div>
     {% endif %}
@@ -28,6 +29,13 @@
       <p><input type=file name=file>
          <input type=submit value=Upload>
     </form>
+    <p>
+        {% if gif_filename %}
+            <img src="{{gif_filename}}">
+        {% else %}
+            <div> no image for whatever reason </div>
+        {% endif %}
+    </p>
 </div>
 
 <div>

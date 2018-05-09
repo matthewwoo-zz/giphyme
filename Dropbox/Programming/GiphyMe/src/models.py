@@ -52,10 +52,12 @@ class Gif(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     giphyme_id = db.relationship('Giphyme', backref='gif', lazy='dynamic')
 
-
-    def __init__(self, title=None, url=None):
-        self.title = title
-        self.url = url
+    #
+    # def __init__(self, title=None, url=None):
+    #     self.title = title
+    #     self.url = url
+    #     self.emotion = emotion
+    #     self.user =
 
     def __repr__(self):
         return "Title: {}, URL: {}, ID: {}".format(self.title, self.url, self.id)
