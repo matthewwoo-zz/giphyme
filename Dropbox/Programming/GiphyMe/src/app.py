@@ -8,6 +8,7 @@ from flask_login import LoginManager,current_user, login_user,logout_user,login_
 from werkzeug.urls import url_parse
 from werkzeug.utils import secure_filename
 from config import Config
+from src.common.loop_paste_face import giphy_me_test
 
 import src.config as c
 
@@ -56,12 +57,16 @@ def profile(username):
     u = User.query.filter_by(username=current_user.username).first()
     s = Selfie.query.filter_by(user_id=u.id).order_by('-id').first()
     g = Gif.query.filter_by(user_id=u.id).order_by('-id').first()
-    selfie_filename = 'http://0.0.0.0:8000/uploads/' + s.filename
-    gif_filename = 'http://0.0.0.0:8000/uploads/' + g.filename
+    selfie_filename = s.url
+    gif_filename = g.url
+    giphyme_filename = giphy_me_test(selfie_filename,gif_filename)
+    print "giphyme"
+    print giphyme_filename
     return render_template('profile.html',
                            username=username,
                            selfie_filename=selfie_filename,
                            gif_filename=gif_filename)
+                           # giphyme_filename=giphyme_filename
 
 @app.route('/logout')
 def logout():
@@ -110,8 +115,9 @@ def upload_selfie():
             return redirect(request.url)
         if file and allowed_file(file.filename):
             filename = secure_filename(file.filename)
+            filename = 'selfie_'+filename
             file.save(os.path.join(Config.UPLOAD_FOLDER, filename))
-            file_path = os.path.join(Config.UPLOAD_FOLDER,filename)
+            file_path = os.path.join(Config.UPLOAD_FOLDER, filename)
             s = Selfie(emotion="Happy", url=file_path, user=u, filename=filename)
             db.session.add(s)
             db.session.commit()
@@ -139,8 +145,9 @@ def upload_gif():
             return redirect(request.url)
         if file and allowed_file(file.filename):
             filename = secure_filename(file.filename)
+            filename = 'gif_'+filename
             file.save(os.path.join(Config.UPLOAD_FOLDER, filename))
-            file_path = os.path.join(Config.UPLOAD_FOLDER,filename)
+            file_path = os.path.join(Config.UPLOAD_FOLDER, filename)
             s = Gif(emotion="Happy", url=file_path, user=u, filename=filename)
             db.session.add(s)
             db.session.commit()

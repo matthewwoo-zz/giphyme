@@ -4,6 +4,8 @@ import src.common.face_methods as fc
 import src.common.gif_maker as gm
 import os
 
+from src.config import Config
+
 '''
 Single Paste
 - Identify face on selfie and crop
@@ -63,7 +65,9 @@ def giphy_me_test(selfie_img, gif):
             i += 1
         except:
             pass
-    gm.create_gif(new_gif_images,'giphy_me_1.gifs')
+    giphyme = gm.create_gif(new_gif_images,'giphy_me_1.gifs')
+    filename = giphyme
+    giphyme.save(os.path.join(Config.UPLOAD_FOLDER,filename))
     files = ['selfie_crop.jpg','selfie_resize.png']
     clean(files)
     return 200
@@ -74,4 +78,4 @@ def clean(files):
         os.remove(path+"/"+i)
     return 200
 
-giphy_me_test('Profile_Photo.png','giphy.gifs')
+# giphy_me_test('Profile_Photo.png','giphy.gifs')
