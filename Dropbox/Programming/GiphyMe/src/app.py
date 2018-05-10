@@ -59,7 +59,7 @@ def profile(username):
     g = Gif.query.filter_by(user_id=u.id).order_by('-id').first()
     selfie_filename = s.url
     gif_filename = g.url
-    giphyme_filename = giphy_me_test(selfie_filename,gif_filename)
+    giphyme_filename = giphy_me_test(selfie_filename, gif_filename)
     print "giphyme"
     print giphyme_filename
     return render_template('profile.html',

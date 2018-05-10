@@ -65,7 +65,7 @@ def giphy_me_test(selfie_img, gif):
             i += 1
         except:
             pass
-    giphyme = gm.create_gif(new_gif_images,'giphy_me_1.gifs')
+    giphyme = gm.create_gif(new_gif_images,'giphy_me_1.gif')
     filename = giphyme
     giphyme.save(os.path.join(Config.UPLOAD_FOLDER,filename))
     files = ['selfie_crop.jpg','selfie_resize.png']
