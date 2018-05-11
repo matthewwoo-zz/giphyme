@@ -45,7 +45,7 @@ Single Paste
 #
 # giphy_me('anthony.jpg','chris.gifs')
 
-def giphy_me_test(selfie_img, gif):
+def giphy_me_test(selfie_img, gif,selfie_name, gif_name):
     selfie_image_cd = fc.outline_face(selfie_img, 1)
     fc.crop_face(input_filename=selfie_img, face_coordinates=selfie_image_cd, output_filename="selfie_crop.jpg")
     gif_images, test_folder = gm.expand_gif(gif)
@@ -65,9 +65,7 @@ def giphy_me_test(selfie_img, gif):
             i += 1
         except:
             pass
-    giphyme = gm.create_gif(new_gif_images,'giphy_me_1.gif')
-    filename = giphyme
-    giphyme.save(os.path.join(Config.UPLOAD_FOLDER,filename))
+    gm.create_gif(new_gif_images,selfie_name + gif_name +'.gif')
     files = ['selfie_crop.jpg','selfie_resize.png']
     clean(files)
     return 200

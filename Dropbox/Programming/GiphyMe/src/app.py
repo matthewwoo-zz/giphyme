@@ -53,20 +53,28 @@ def login():
 @login_required
 @app.route('/profile/<username>')
 def profile(username):
-    print current_user
     u = User.query.filter_by(username=current_user.username).first()
     s = Selfie.query.filter_by(user_id=u.id).order_by('-id').first()
     g = Gif.query.filter_by(user_id=u.id).order_by('-id').first()
-    selfie_filename = s.url
-    gif_filename = g.url
-    giphyme_filename = giphy_me_test(selfie_filename, gif_filename)
-    print "giphyme"
-    print giphyme_filename
+    selfie_filename = 'http://0.0.0.0:8000/uploads/' + s.filename
+    gif_filename = 'http://0.0.0.0:8000/uploads/' + g.filename
     return render_template('profile.html',
                            username=username,
                            selfie_filename=selfie_filename,
                            gif_filename=gif_filename)
-                           # giphyme_filename=giphyme_filename
+
+@app.route('/giphyme/<username>')
+def giphyme(username):
+    u = User.query.filter_by(username=current_user.username).first()
+    s = Selfie.query.filter_by(user_id=u.id).order_by('-id').first()
+    g = Gif.query.filter_by(user_id=u.id).order_by('-id').first()
+    selfie_url = s.url
+    gif_url = g.url
+    giphy_me_test(selfie_url, gif_url, s.filename, g.filename)
+    return 200
+
+
+
 
 @app.route('/logout')
 def logout():

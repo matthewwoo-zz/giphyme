@@ -2,6 +2,7 @@ from PIL import Image, ImageDraw
 import tempfile as tp
 import imageio
 import os
+from src.config import Config
 
 
 def iter_frames(im):
@@ -38,7 +39,7 @@ def create_gif(gif_images, output_filename):
     images = []
     for filename in gif_images:
         images.append(imageio.imread(filename))
-    imageio.mimsave(output_filename, images)
+    imageio.mimsave(Config.UPLOAD_FOLDER + output_filename, images)
 
 def test_gif():
     folder = "/Users/mattw/Dropbox/Programming/GiphyMe/src/images"
