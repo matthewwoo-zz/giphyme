@@ -71,7 +71,12 @@ def giphyme(username):
     selfie_url = s.url
     gif_url = g.url
     giphy_me_test(selfie_url, gif_url, s.filename, g.filename)
-    return 200
+    gm_filename = s.filename + g.filename + '.gif'
+    giphyme_filename = 'http://0.0.0.0:8000/uploads/' + gm_filename
+    print giphyme_filename
+    return render_template('giphyme.html',
+                           username=username,
+                           giphyme_filename=giphyme_filename)
 
 
 

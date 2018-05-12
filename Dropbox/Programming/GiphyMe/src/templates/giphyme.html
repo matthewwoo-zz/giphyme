@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block content %}
+<div>
+    <h1>Hi, {{current_user.username}}</h1>
+</div>
+
+<div>
+    <h2>GiphyMes</h2>
+    <hr>
+    <p>
+        {% if giphyme_filename %}
+            <img src="{{giphyme_filename}}">
+        {% else %}
+            <div> no image for whatever reason </div>
+        {% endif %}
+    </p>
+</div>
+
+{% endblock %}
