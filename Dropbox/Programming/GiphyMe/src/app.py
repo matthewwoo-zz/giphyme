@@ -18,7 +18,7 @@ app.config.from_object(Config)
 login = LoginManager(app)
 login.login_view = 'login'
 db = SQLAlchemy(app)
-migrate = Migrate(app,db)
+migrate = Migrate(app, db)
 
 
 @login.user_loader
@@ -78,9 +78,6 @@ def giphyme(username):
                            username=username,
                            giphyme_filename=giphyme_filename)
 
-
-
-
 @app.route('/logout')
 def logout():
     logout_user()
@@ -100,10 +97,21 @@ def signup():
         return redirect(url_for('login'))
     return render_template('signup.html', title='Sign Up', form=form)
 
-# @app.route('/query')
-# def query_gif():
-#     print Gif.query.all()
-#     return "Query"
+@app.route('/gif_library', methods=['GET','POST'])
+
+def gif_library():
+    """
+    1. Query all gifs into a collection or is it an array #check
+    2. Update image url for each image
+    3. Render each image in html
+    """
+    g = Gif.query.all()
+    gif_library_collection = []
+    for i in g:
+        gif_filename = 'http://0.0.0.0:8000/uploads/' + i.filename
+        gif_library_collection.append(gif_filename)
+    print gif_library_collection
+    return render_template('gif_library.html', gif_library_collection=gif_library_collection)
 
 
 
@@ -164,7 +172,6 @@ def upload_gif():
             s = Gif(emotion="Happy", url=file_path, user=u, filename=filename)
             db.session.add(s)
             db.session.commit()
-            print "commited"
             flash('Congratulations you have uploaded your gif')
             # the reason why it's 'upload_file' and not 'upload' is that url_for builds url based on the function and not the route
             # return redirect(url_for('uploaded_file',
