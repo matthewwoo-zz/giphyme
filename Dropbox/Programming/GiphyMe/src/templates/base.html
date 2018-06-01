@@ -11,8 +11,10 @@
     <a href="{{url_for('home')}}">Home</a>
     <a href="{{url_for('login')}}">Login</a>
     <a href="{{url_for('signup')}}">Sign Up</a>
+    <a href="{{url_for('gif_library}}">All the Gifs</a>
     {% else %}
     <a href="{{url_for('profile', username=username)}}">Profile</a>
+    <a href="{{url_for('user_gif_library', username=username}}">Your Gif Library</a>
     <a href="{{url_for('logout')}}">Logout</a>
     {% endif %}
 </div>
@@ -36,7 +38,8 @@
 </ul>
 {% endif %}
 {% endwith %}
-{% block content %}{% endblock %}
+{% block content %}
+{% endblock %}
 </div>
 </body>
 </html>

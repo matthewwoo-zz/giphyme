@@ -1,3 +1,4 @@
+
 import os
 
 from flask import Flask, request, redirect, url_for, render_template, send_from_directory
@@ -13,7 +14,7 @@ from src.common.loop_paste_face import giphy_me_test
 import src.config as c
 
 
-app = Flask(__name__)
+app = Flask(__name__,template_folder='/Users/mattw/Dropbox/Programming/GiphyMe/src/templates')
 app.config.from_object(Config)
 login = LoginManager(app)
 login.login_view = 'login'
@@ -98,7 +99,6 @@ def signup():
     return render_template('signup.html', title='Sign Up', form=form)
 
 @app.route('/gif_library', methods=['GET','POST'])
-
 def gif_library():
     """
     1. Query all gifs into a collection or is it an array #check
@@ -112,6 +112,20 @@ def gif_library():
         gif_library_collection.append(gif_filename)
     print gif_library_collection
     return render_template('gif_library.html', gif_library_collection=gif_library_collection)
+
+@app.route('/gif_library/<username>', methods=['GET','POST'])
+def user_gif_library(username):
+    u = User.query.filter_by(username=current_user.username).first()
+    g = Gif.query.filter_by(user_id=u.id)
+    gif_library_collection = []
+    for i in g:
+        gif_filename = 'http://0.0.0.0:8000/uploads/' + i.filename
+        gif_library_collection.append(gif_filename)
+    print gif_library_collection
+    return render_template('user_gif_library.html', gif_library_collection=gif_library_collection, username=username)
+
+
+
 
 
 
