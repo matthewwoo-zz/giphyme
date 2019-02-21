@@ -20,7 +20,6 @@ login = LoginManager(app)
 login.login_view = 'login'
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
-x = "y"
 
 
 @login.user_loader

@@ -42,11 +42,11 @@ def create_gif(gif_images, output_filename):
     imageio.mimsave(Config.UPLOAD_FOLDER + output_filename, images)
 
 def test_gif():
-    folder = "/Users/mattw/Dropbox/Programming/GiphyMe/src/images"
+    folder = "/Users/mattujet/Desktop/GiphyMe/giphyme/Dropbox/Programming/GiphyMe/src/"
     listing = os.listdir(folder)
     images = []
     for filename in listing:
-        filename = "/Users/mattw/Dropbox/Programming/GiphyMe/src/images/"+filename
+        filename = "/Users/mattujet/Desktop/GiphyMe/giphyme/Dropbox/Programming/GiphyMe/src/"+filename
         images.append(imageio.imread(filename))
     imageio.mimsave('new_giphyme.gif',images)
     return 200
@@ -55,15 +55,11 @@ def test_gif():
 
 
 def print_images():
-    folder = "/Users/mattw/Dropbox/Programming/GiphyMe/src/images"
+    folder = "/Users/mattujet/Desktop/GiphyMe/giphyme/Dropbox/Programming/GiphyMe/src/"
     listing = os.listdir(folder)
-    os.remove("/Users/mattw/Dropbox/Programming/GiphyMe/src/images/.DS_Store")
+    os.remove("/Users/mattujet/Desktop/GiphyMe/giphyme/Dropbox/Programming/GiphyMe/src/.DS_Store")
     for filename in listing:
         print filename
-
-test_gif()
-
-
 
 ## Expand gifs into frames old method with no temp folders
 # def expand_gif_old(input_filename):
