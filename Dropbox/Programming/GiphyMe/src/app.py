@@ -14,7 +14,7 @@ from src.common.loop_paste_face import giphy_me_test
 import src.config as c
 
 
-app = Flask(__name__,template_folder='/Users/mattw/Dropbox/Programming/GiphyMe/src/templates')
+app = Flask(__name__,template_folder='/Users/mattujet/Desktop/GiphyMe/giphyme/Dropbox/Programming/GiphyMe/src/templates')
 app.config.from_object(Config)
 login = LoginManager(app)
 login.login_view = 'login'
